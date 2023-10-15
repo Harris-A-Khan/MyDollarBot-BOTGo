@@ -1,8 +1,8 @@
 import os
 import json
-from mock import patch
+from unittest.mock import patch
 from telebot import types
-from main import estimate
+from backend.src.main import estimate
 
 
 @patch('telebot.telebot')

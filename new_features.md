@@ -1,10 +1,8 @@
 # New Planned Features
 
-*   [x] Reformat the run.sh script into an install script and run script
+*   [ ] Reformat the run.sh script into an install script and run script
 
     *   [ ] Ensure documentation reflects this change
-
-*   [ ] GET TESTS WORKING AGAIN ( they do not run at the moment)&#x20;
 
 *   [ ] Create a GUI page that shows all the budget information at once
 
@@ -61,4 +59,3 @@ This is a checklist for after the changes above are made. Treat this as a checkl
 *   ensure new tests are written
 
 *   Documentation for split up run and install .sh script
-

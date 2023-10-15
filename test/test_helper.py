@@ -1,8 +1,8 @@
-from main import helper
-from main.helper import isCategoryBudgetByCategoryAvailable, throw_exception
+from backend.src.main import helper
+from backend.src.helper import isCategoryBudgetByCategoryAvailable, throw_exception
 from mock import ANY
 from telebot import types
-from mock.mock import patch
+from unittest.mock import patch
 import logging
 import mock
 

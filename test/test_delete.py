@@ -1,7 +1,7 @@
 import os
 import json
-from main import delete
-from mock import patch
+from backend.src.main import delete
+from unittest.mock import patch
 from telebot import types
 
 

@@ -1,9 +1,8 @@
 from mock import ANY
 import mock
-from mock.mock import patch
+from unittest.mock import patch
 from telebot import types
-from main import budget
-
+from backend.src.main import budget
 
 @patch('telebot.telebot')
 def test_run(mock_telebot, mocker):

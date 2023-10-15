@@ -1,7 +1,7 @@
-from main import budget_view
+from backend.src import budget_view
 import mock
 from mock import ANY
-from mock.mock import patch
+from unittest.mock import patch
 from telebot import types
 
 

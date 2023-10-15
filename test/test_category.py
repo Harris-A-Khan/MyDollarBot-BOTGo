@@ -1,9 +1,9 @@
 import os
 import json
 import mock
-from mock.mock import patch
+from unittest.mock import patch
 from telebot import types
-from main import category
+from backend.src.main import category
 from mock import ANY
 
 

@@ -1,8 +1,8 @@
 import os
 import json
-from mock.mock import patch
+from unittest.mock import patch
 from telebot import types
-from src.main import add
+from backend.src.main import add
 from mock import ANY
 
 

@@ -24,7 +24,7 @@ function BudgetView() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <Typography.Title level={2}>Budget Data</Typography.Title>
+      <Typography.Title level={4} style={{ color: 'red' }}>Budget Data</Typography.Title>
       <Table dataSource={mockData.budget_data} pagination={false} rowKey="category">
         <Table.Column title="Category" dataIndex="category" />
         <Table.Column title="Allocated" dataIndex="allocated" />
@@ -34,7 +34,7 @@ function BudgetView() {
 
       <Divider />
 
-      <Typography.Title level={2}>Spendings</Typography.Title>
+      <Typography.Title level={4} style={{ color: 'red' }}>Spendings</Typography.Title>
       <Select
         style={{ width: 200, marginBottom: 20 }}
         placeholder="Select a category"
@@ -56,15 +56,6 @@ function BudgetView() {
       </Table>
 
       <Divider />
-
-      <Typography.Title level={2}>Categories</Typography.Title>
-      <Card>
-        {mockData.categories.map((cat, index) => (
-          <Card.Grid key={index} style={{ width: '33%', textAlign: 'center' }}>
-            {cat}
-          </Card.Grid>
-        ))}
-      </Card>
     </div>
   );
 }

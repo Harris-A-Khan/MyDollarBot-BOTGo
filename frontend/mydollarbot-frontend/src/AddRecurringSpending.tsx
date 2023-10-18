@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, InputNumber, DatePicker, Select, Modal } from 'antd';
+import { Form, Input, Button, InputNumber, DatePicker, Select, Modal,Typography } from 'antd';
 
 const { Option } = Select;
 const { confirm } = Modal;
@@ -25,7 +25,7 @@ const AddRecurringSpending: React.FC = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>Add New Recurring Spending Record</h2>
+      <Typography.Title level={4} style={{ color: 'red' }}>Add New Recurring Spending Record</Typography.Title>
       <Form layout="vertical" onFinish={handleAdd} form={form}>
         <Form.Item 
           label="Category" 

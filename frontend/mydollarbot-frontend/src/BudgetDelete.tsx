@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Select, Modal } from 'antd';
+import { Form, Button, Select, Modal, Typography } from 'antd';
 
 const { Option } = Select;
 const { confirm } = Modal;
@@ -26,7 +26,7 @@ const BudgetDelete: React.FC = () => {
 
     return (
         <div style={{ padding: '20px' }}>
-            <h2>Delete Budget by Category</h2>
+      <Typography.Title level={4} style={{ color: 'red' }}>Delete Budget by Category</Typography.Title>
             <Form layout="vertical" onFinish={handleDelete}>
                 <Form.Item label="Category">
                     <Select

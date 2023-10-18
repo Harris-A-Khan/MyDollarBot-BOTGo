@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, Typography} from 'antd';
 
 const { Option } = Select;
 
@@ -16,7 +16,7 @@ const BudgetUpdate: React.FC = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>Update Budget by Category</h2>
+      <Typography.Title level={4} style={{ color: 'red' }}>Update Budget by Category</Typography.Title>
       <Form layout="vertical" onFinish={handleSubmit}>
         <Form.Item label="Category">
           <Select value={category} onChange={(value) => setCategory(value)}>

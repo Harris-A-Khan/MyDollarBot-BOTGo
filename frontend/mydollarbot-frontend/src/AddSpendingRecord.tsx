@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, InputNumber, DatePicker, Modal } from 'antd';
+import { Form, Input, Button, InputNumber, DatePicker, Modal, Typography } from 'antd';
 
 const { confirm } = Modal;
 
 const AddSpendingRecord: React.FC = () => {
   const [form] = Form.useForm();
-  
+
   const handleAdd = (values: any) => {
     // Confirm before adding
     confirm({
@@ -24,17 +24,18 @@ const AddSpendingRecord: React.FC = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <h2>Add New Spending Record</h2>
+      <Typography.Title level={4} style={{ color: 'red' }}>Add New Spending Record</Typography.Title>
+
       <Form layout="vertical" onFinish={handleAdd} form={form}>
-        <Form.Item 
-          label="Category" 
+        <Form.Item
+          label="Category"
           name="category"
           rules={[{ required: true, message: 'Please input the category!' }]}
         >
           <Input placeholder="e.g., Food, Rent, Entertainment" />
         </Form.Item>
-        <Form.Item 
-          label="Amount" 
+        <Form.Item
+          label="Amount"
           name="amount"
           rules={[{ required: true, message: 'Please input the amount!' }]}
         >
@@ -43,8 +44,8 @@ const AddSpendingRecord: React.FC = () => {
         <Form.Item label="Description" name="description">
           <Input placeholder="Description of spending" />
         </Form.Item>
-        <Form.Item 
-          label="Date" 
+        <Form.Item
+          label="Date"
           name="date"
           rules={[{ required: true, message: 'Please select the date!' }]}
         >

@@ -3,6 +3,7 @@ import json
 from unittest.mock import patch
 from telebot import types
 from backend.src.main import estimate
+import warnings
 
 
 @patch('telebot.telebot')
@@ -102,6 +103,7 @@ def create_message(text):
 
 
 def test_read_json():
+    warnings.filterwarnings("ignore")
     try:
         if not os.path.exists('./test/dummy_expense_record.json'):
             with open('./test/dummy_expense_record.json', 'w') as json_file:

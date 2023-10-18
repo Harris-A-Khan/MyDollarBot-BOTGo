@@ -3,9 +3,11 @@ import json
 from backend.src.main import history
 from unittest.mock import patch
 from telebot import types
+import warnings
 
 
 def test_read_json():
+    warnings.filterwarnings("ignore")
     try:
         if not os.path.exists('./test/dummy_expense_record.json'):
             with open('./test/dummy_expense_record.json', 'w') as json_file:

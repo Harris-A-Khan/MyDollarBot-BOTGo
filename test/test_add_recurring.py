@@ -4,6 +4,7 @@ from unittest.mock import patch
 from telebot import types
 from backend.src.main import add
 from mock import ANY
+import warnings
 
 
 dateFormat = '%d-%b-%Y'
@@ -129,6 +130,7 @@ def create_message(text):
 
 
 def test_read_json():
+    warnings.filterwarnings("ignore")
     try:
         if not os.path.exists('./test/dummy_expense_record.json'):
             with open('./test/dummy_expense_record.json', 'w') as json_file:

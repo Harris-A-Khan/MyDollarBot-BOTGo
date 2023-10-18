@@ -1,8 +1,10 @@
 import './App.css'
 import { useEffect, useState } from 'react';
 import { getData } from './api/index'
+
 import BudgetView from './BudgetView';
 import BudgetUpdate from './BudgetUpdate';
+import BudgetDelete from './BudgetDelete';
 
 
 import { Table, Card, Divider, Typography } from 'antd'; // Importing antd components
@@ -73,6 +75,10 @@ function App() {
           <Divider />
           <Typography.Title level={2}>Budget Update</Typography.Title>
           <BudgetUpdate />
+
+          <Divider />
+          <Typography.Title level={2}>Budget Delete</Typography.Title>
+          <BudgetDelete />
 
 
           <Typography.Title level={2}>Spendings</Typography.Title>

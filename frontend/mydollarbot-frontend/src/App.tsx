@@ -1,6 +1,9 @@
 import './App.css'
 import { useEffect, useState } from 'react';
 import { getData } from './api/index'
+import BudgetView from './BudgetView';
+import BudgetUpdate from './BudgetUpdate';
+
 
 import { Table, Card, Divider, Typography } from 'antd'; // Importing antd components
 
@@ -64,6 +67,13 @@ function App() {
           <Table dataSource={data.budget_data} columns={budgetColumns} pagination={false} />
           
           <Divider />
+          <Typography.Title level={2}>Budget View</Typography.Title>
+          <BudgetView />
+
+          <Divider />
+          <Typography.Title level={2}>Budget Update</Typography.Title>
+          <BudgetUpdate />
+
 
           <Typography.Title level={2}>Spendings</Typography.Title>
           <Table dataSource={data.spendings} columns={spendingsColumns} pagination={false} />
@@ -78,6 +88,9 @@ function App() {
               </Card.Grid>
             ))}
           </Card>
+
+          
+
         </>
       ) : (
         <p>loading...</p>

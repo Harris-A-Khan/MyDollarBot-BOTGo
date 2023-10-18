@@ -6,7 +6,7 @@ import BudgetView from './BudgetView';
 import BudgetUpdate from './BudgetUpdate';
 import BudgetDelete from './BudgetDelete';
 import AddSpendingRecord from './AddSpendingRecord';
-
+import AddRecurringSpending from './AddRecurringSpending';
 
 import { Table, Card, Divider, Typography } from 'antd'; // Importing antd components
 
@@ -90,8 +90,11 @@ function App() {
           <AddSpendingRecord />
           <Divider />
 
-          
+          <Typography.Title level={2}>Add Recurring Spending Record</Typography.Title>
+          <AddRecurringSpending />
+          <Divider />
 
+          
           <Typography.Title level={2}>Categories</Typography.Title>
           <Card>
             {data.categories.map((cat: any) => (

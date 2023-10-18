@@ -68,7 +68,7 @@ function App() {
       {data ? (
         <>
           <Divider />
-          <Typography.Title level={2}>Budget Management</Typography.Title>
+          <Typography.Title level={2}>TrackMyDollar-BOTGo</Typography.Title>
 
           <Tabs defaultActiveKey="1">
             <TabPane tab="Budget View" key="1">

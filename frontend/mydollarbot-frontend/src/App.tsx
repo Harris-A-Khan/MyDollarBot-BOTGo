@@ -2,7 +2,14 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import { getData } from './api/index'
 
-import { Table, Card, Divider, Typography } from 'antd'; // Importing antd components
+import BudgetView from './BudgetView';
+import BudgetUpdate from './BudgetUpdate';
+import BudgetDelete from './BudgetDelete';
+import AddSpendingRecord from './AddSpendingRecord';
+import AddRecurringSpending from './AddRecurringSpending';
+
+import { Tabs, Table, Card, Divider, Typography } from 'antd'; // Importing antd components
+const { TabPane } = Tabs;
 
 function App() {
   const [data, setData] = useState<any>(null);
@@ -60,24 +67,33 @@ function App() {
     <>
       {data ? (
         <>
-          <Typography.Title level={2}>Budget Data</Typography.Title>
-          <Table dataSource={data.budget_data} columns={budgetColumns} pagination={false} />
-          
+          <Divider />
+          <Typography.Title level={2}>TrackMyDollar-BOTGo</Typography.Title>
+
+          <Tabs defaultActiveKey="1">
+            <TabPane tab="Budget View" key="1">
+              <BudgetView />
+            </TabPane>
+
+            <TabPane tab="Budget Update" key="2">
+              <BudgetUpdate />
+            </TabPane>
+
+            <TabPane tab="Budget Delete" key="3">
+              <BudgetDelete />
+            </TabPane>
+
+            <TabPane tab="Add Spending Record" key="4">
+              <AddSpendingRecord />
+            </TabPane>
+
+            <TabPane tab="Add Recurring Spending Record" key="5">
+              <AddRecurringSpending />
+            </TabPane>
+          </Tabs>
+
           <Divider />
 
-          <Typography.Title level={2}>Spendings</Typography.Title>
-          <Table dataSource={data.spendings} columns={spendingsColumns} pagination={false} />
-          
-          <Divider />
-
-          <Typography.Title level={2}>Categories</Typography.Title>
-          <Card>
-            {data.categories.map((cat: any) => (
-              <Card.Grid key={cat.id} style={{ width: '20%', textAlign: 'center' }}>
-                {cat.name}
-              </Card.Grid>
-            ))}
-          </Card>
         </>
       ) : (
         <p>loading...</p>

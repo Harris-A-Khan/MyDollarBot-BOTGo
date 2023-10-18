@@ -16,15 +16,15 @@
 
         *   There should be a page or function for every function that already exists in the app, this means we need a function for:
 
-            *   [ ] budget view (with per category view)(sanjit)
+            *   [x] budget view (with per category view)(sanjit)
 
-            *   [ ] budget update (with per category update)(sanjit)
+            *   [x] budget update (with per category update)(sanjit)
 
-            *   [ ] budget delete (with per category delete)(sanjit)
+            *   [x] budget delete (with per category delete)(sanjit)
 
-            *   [ ] add a new spending record(sanjit)
+            *   [x] add a new spending record(sanjit)
 
-            *   [ ] add a recurring spending record(sanjit)
+            *   [x] add a recurring spending record(sanjit)
 
             *   [ ] display the sum of the monthly expenditure
 

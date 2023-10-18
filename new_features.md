@@ -34,13 +34,13 @@
 
             *   [ ] edit spending
 
-            *   [ ] category functionality
+            *   [x] category functionality (ARUL)
 
-                *   [ ] add new category
+                *   [x] add new category
 
-                *   [ ] delete new category
+                *   [x] delete new category
 
-                *   [ ] show all custom categories
+                *   [x] show all custom categories
 
 *   [x] Create a telegram functionality that opens the GUI webpage (sanjit)
 

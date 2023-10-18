@@ -5,6 +5,7 @@ import { getData } from './api/index'
 import BudgetView from './BudgetView';
 import BudgetUpdate from './BudgetUpdate';
 import BudgetDelete from './BudgetDelete';
+import AddSpendingRecord from './AddSpendingRecord';
 
 
 import { Table, Card, Divider, Typography } from 'antd'; // Importing antd components
@@ -83,8 +84,13 @@ function App() {
 
           <Typography.Title level={2}>Spendings</Typography.Title>
           <Table dataSource={data.spendings} columns={spendingsColumns} pagination={false} />
-          
           <Divider />
+
+          <Typography.Title level={2}>Add Spending Record</Typography.Title>
+          <AddSpendingRecord />
+          <Divider />
+
+          
 
           <Typography.Title level={2}>Categories</Typography.Title>
           <Card>

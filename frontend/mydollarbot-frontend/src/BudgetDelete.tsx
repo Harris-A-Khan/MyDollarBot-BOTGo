@@ -24,7 +24,7 @@ const BudgetDelete: React.FC = () => {
     const handleDelete = () => {
         // Confirm before deletion
         confirm({
-            title: 'Do you want to delete this category?',
+            title: 'Do you want to delete this category budget?',
             content: `Category: ${category}`,
             onOk() {
                 // TODO: Handle the delete logic here. Update the backend/API to delete the category.
@@ -38,9 +38,9 @@ const BudgetDelete: React.FC = () => {
 
     return (
         <div style={{ padding: '20px' }}>
-      <Typography.Title level={4} style={{ color: 'red' }}>Delete Budget by Category</Typography.Title>
+      <Typography.Title level={4} style={{ color: 'red' }}>Delete Budget</Typography.Title>
             <Form layout="vertical" onFinish={handleDelete}>
-                <Form.Item label="Category">
+                <Form.Item label="Select Category">
                     <Select
                         value={category}
                         onChange={(value) => setCategory(value)}

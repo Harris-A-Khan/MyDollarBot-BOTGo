@@ -2,7 +2,7 @@ from mock import ANY
 import mock
 from unittest.mock import patch
 from telebot import types
-from backend.src.main import budget
+import budget
 
 @patch('telebot.telebot')
 def test_run(mock_telebot, mocker):

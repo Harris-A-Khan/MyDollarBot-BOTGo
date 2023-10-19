@@ -1,4 +1,4 @@
-from backend.src import budget_delete
+import budget_delete
 from unittest.mock import patch
 from telebot import types
 

@@ -1,4 +1,4 @@
-from backend.src import budget_update
+import budget_update
 import mock
 from mock import ANY
 from unittest.mock import patch

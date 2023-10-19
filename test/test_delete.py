@@ -1,6 +1,6 @@
 import os
 import json
-from backend.src.main import delete
+import delete
 from unittest.mock import patch
 from telebot import types
 import warnings

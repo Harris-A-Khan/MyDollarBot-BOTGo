@@ -3,16 +3,16 @@
 import logging
 import telebot
 import time
-from backend.src import helper
-from backend.src import edit
-from backend.src import history
-from backend.src import display
-from backend.src import estimate
-from backend.src import delete
-from backend.src import add
-from backend.src import budget
-from backend.src import category
-from backend.src import add_recurring
+import helper
+import edit
+import history
+import display
+import estimate
+import delete
+import add
+import budget
+import category
+import add_recurring
 from datetime import datetime
 from jproperties import Properties
 

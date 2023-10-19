@@ -1,4 +1,4 @@
-from backend.src import helper
+import helper
 
 
 def run(message, bot):

@@ -1,6 +1,7 @@
-from backend.src.main import helper
-from backend.src import helper
-from backend.src.helper import isCategoryBudgetByCategoryAvailable, throw_exception
+import sys
+sys.path.insert(0, './backend/src/')
+import helper
+# from helper import isCategoryBudgetByCategoryAvailable, throw_exception
 from mock import ANY
 from telebot import types
 from unittest.mock import patch
@@ -243,7 +244,7 @@ def test_throw_exception(mock_telebot, mocker):
 
     message = create_message("message from testing")
 
-    throw_exception("hello, exception from testing", message, mc, logging)
+    helper.throw_exception("hello, exception from testing", message, mc, logging)
     mc.reply_to.assert_called_with(message, 'Oh no! hello, exception from testing')
 
 
@@ -317,13 +318,13 @@ def test_isCategoryBudgetAvailable():
 
 def test_isCategoryBudgetByCategoryAvailable_working():
     helper.getCategoryBudget = mock.Mock(return_value={'Food': 10})
-    testresult = isCategoryBudgetByCategoryAvailable(10, 'Food')
+    testresult = helper.isCategoryBudgetByCategoryAvailable(10, 'Food')
     assert(testresult)
 
 
 def test_isCategoryBudgetByCategoryAvailable_none_case():
     helper.getCategoryBudget = mock.Mock(return_value=None)
-    testresult = isCategoryBudgetByCategoryAvailable(10, 'Food')
+    testresult = helper.isCategoryBudgetByCategoryAvailable(10, 'Food')
     assert(testresult is False)
 
 

@@ -1,7 +1,7 @@
-from backend.src import helper
-from backend.src import budget_view
-from backend.src import budget_update
-from backend.src import budget_delete
+import helper
+import budget_view
+import budget_update
+import budget_delete
 import logging
 from telebot import types
 

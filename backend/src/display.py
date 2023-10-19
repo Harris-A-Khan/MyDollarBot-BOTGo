@@ -1,7 +1,7 @@
 import time
 import os
-from backend.src import helper
-from backend.src import graphing
+import helper
+import graphing
 import logging
 from telebot import types
 from datetime import datetime

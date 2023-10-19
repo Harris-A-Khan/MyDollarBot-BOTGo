@@ -2,7 +2,7 @@ import os
 import json
 from unittest.mock import patch
 from telebot import types
-from backend.src.main import display
+import display
 import warnings
 
 

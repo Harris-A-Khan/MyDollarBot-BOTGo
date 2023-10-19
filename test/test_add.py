@@ -1,8 +1,10 @@
 import os
+import sys
 import json
 from unittest.mock import patch
 from telebot import types
-from backend.src.main import add
+sys.path.insert(0, './backend/src/')
+import add
 from mock import ANY
 import warnings
 

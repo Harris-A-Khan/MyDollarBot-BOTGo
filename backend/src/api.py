@@ -6,8 +6,8 @@ from collections import namedtuple
 import logging
 from add import run, add_user_record, post_category_selection, post_amount_input
 import json
-
 from jproperties import Properties
+from flask_cors import CORS
 
 configs = Properties()
 
@@ -23,6 +23,7 @@ telebot.logger.setLevel(logging.INFO)
 option = {}
 
 app = Flask(__name__)
+CORS(app)
 
 # functions for creating an artificial message so that its still synced with the bot
 def dict_to_obj(data):
@@ -125,20 +126,27 @@ def input_amount():
 
 @app.route("/all-budget-data", methods=['GET'])
 def get_all_data():
-    user_id = request.json.get('user_id')
+    user_id = request.args.get('user_id')
+    if not user_id:
+        return jsonify({"message": "user_id parameter is required"}), 400
 
-    # open expense_record.json 
-    with open('expense_record.json', 'r') as f:
-        data = f.read()
+    try:
+        # open expense_record.json 
+        with open('expense_record.json', 'r') as f:
+            data = f.read()
+            obj = json.loads(data)
 
-    # parse file
-    obj = json.loads(data)
+            # look for the user_id and return the data
+            if user_id in obj:
+                return jsonify(obj[user_id])
+            else: 
+                return jsonify({"message": "user not found"}), 404
 
-    # look for the user_id and return the data
-    if obj[user_id] != None:
-        return jsonify(obj[user_id])
-    else: 
-        return jsonify({"message": "user not found"})
+    except Exception as e:
+        return jsonify({"message": "Error processing request", "error": str(e)}), 500
+    
+
+## FOR THE CATEGORIES
     
 @app.route("/all-categories", methods=['GET'])
 def get_all_categories():
@@ -150,6 +158,48 @@ def get_all_categories():
     data = data.split(',')
 
     return jsonify(data)
+
+# delete a category
+@app.route("/delete-category", methods=['POST'])
+def delete_category(): 
+    category = request.json.get('category')
+    # open categories.txt
+    with open('categories.txt', 'r') as f:
+        data = f.read()
+
+    # split each line using the comma as a delimeter 
+    categories = data.split(',')
+
+    # remove the category from the list
+    if category in categories:
+        categories.remove(category)
+
+    # write the updated list back to categories.txt
+    with open('categories.txt', 'w') as f:
+        f.write(','.join(categories))
+
+    return jsonify({"message": "Category deleted successfully."})
+
+@app.route("/add-category", methods=['POST'])
+def add_category(): 
+    category = request.json.get('category')
+    # open categories.txt
+    with open('categories.txt', 'r') as f:
+        data = f.read()
+
+    # split each line using the comma as a delimiter 
+    categories = data.split(',')
+
+    # add the category to the list if it's not already there
+    if category not in categories:
+        categories.append(category)
+
+    # write the updated list back to categories.txt
+    with open('categories.txt', 'w') as f:
+        f.write(','.join(categories))
+
+    return jsonify({"message": "Category added successfully."})
+
 
 if __name__ == '__main__':
     app.run(debug=True)

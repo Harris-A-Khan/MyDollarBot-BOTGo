@@ -1,11 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table, Button, Input, Divider, Typography, Popconfirm } from 'antd';
+import { getAllCategories } from './api';
 
 const dummyCategories = ['Food', 'Rent', 'Entertainment'];
 
 function ManageCategories() {
-  const [categories, setCategories] = useState(dummyCategories);
+  const [categories, setCategories] = useState([]);
   const [newCategory, setNewCategory] = useState('');
+
+  useEffect(() => {
+    async function fetchData() {
+      const categoryData = await getAllCategories();
+      setCategories(categoryData);
+    }
+    fetchData();
+  }, []);
 
   const handleAddCategory = () => {
     if (newCategory && !categories.includes(newCategory)) {

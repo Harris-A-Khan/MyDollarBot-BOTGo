@@ -1,6 +1,6 @@
 import './App.css'
 import { useEffect, useState } from 'react';
-import { getData } from './api/index'
+import { getAllBudgetData, getAllCategories, getDummyData } from './api/index'
 
 import BudgetView from './BudgetView';
 import BudgetUpdate from './BudgetUpdate';
@@ -9,17 +9,22 @@ import AddSpendingRecord from './AddSpendingRecord';
 import AddRecurringSpending from './AddRecurringSpending';
 import ManageCategories from './ManageCategories';
 
-import { Tabs, Table, Card, Divider, Typography } from 'antd'; // Importing antd components
+import { Tabs, Divider, Typography } from 'antd'; // Importing antd components
 const { TabPane } = Tabs;
 
 function App() {
   const [data, setData] = useState<any>(null);
+  const [categories, setCategories] = useState<any>(null);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getData();
-      const data = await response.json();
+      // const response = await getDummyData();
+      // const response = await getAllBudgetData("6577837440");
+      const data = await getAllBudgetData("6577837440");
       setData(data);
+
+      const categoryData = await getAllCategories();
+      setCategories(categoryData);
     }
     fetchData();
   }, []);
@@ -63,6 +68,8 @@ function App() {
       dataIndex: 'date',
     }
   ];
+
+  console.log(data);
 
   return (
     <>

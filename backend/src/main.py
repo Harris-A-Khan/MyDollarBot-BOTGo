@@ -107,6 +107,18 @@ def command_budget(message):
 def command_category(message):
     category.run(message, bot)
 
+# function to handle the /web command
+@bot.message_handler(commands=['web'])
+def command_web(message):
+    chat_id = message.chat.id
+    url = f'http://localhost:5173\\{chat_id}'  
+    full_message = (
+        f"Click the link to open the web client: {url}\n\n"
+        "NOTE: This currently only works on local machines running the node server."
+    )
+    bot.send_message(chat_id, full_message)
+
+
 
 # not used
 def addUserHistory(chat_id, user_record):

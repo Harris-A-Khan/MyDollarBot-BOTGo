@@ -48,7 +48,8 @@ commands = {
     'delete': 'Clear/Erase all your records',
     'edit': 'Edit/Change spending details',
     'budget': 'Add/Update/View/Delete budget',
-    'category': 'Add/Delete/Show custom categories'
+    'category': 'Add/Delete/Show custom categories',
+    'web' : 'Open MyDollarBot-BOTGo Web Client'
 }
 
 dateFormat = '%d-%b-%Y'

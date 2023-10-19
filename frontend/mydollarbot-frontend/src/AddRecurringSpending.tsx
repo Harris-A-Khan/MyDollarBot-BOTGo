@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, InputNumber, DatePicker, Select, Modal,Typography } from 'antd';
+import { Form, Input, Button, InputNumber, DatePicker, Modal, Typography } from 'antd';
 
-const { Option } = Select;
 const { confirm } = Modal;
 
-const AddRecurringSpending: React.FC = () => {
+/**
+ * AddSpendingRecord Component
+ * 
+ * This component provides functionality to add a new spending record.
+ * It uses the Ant Design library for UI components.
+ * Users can input details about the spending, such as category, amount, description, and date.
+ * Before adding, a confirmation modal is shown to the user.
+ */
+const AddSpendingRecord: React.FC = () => {
+  // Using Ant Design's useForm hook to manage form operations
   const [form] = Form.useForm();
 
+  /**
+   * Handles the submission of the form.
+   * This function can be updated to handle the logic for adding the record to the backend/API.
+   * Before adding, a confirmation modal is shown to the user.
+   */
   const handleAdd = (values: any) => {
     // Confirm before adding
     confirm({
-      title: 'Do you want to add this recurring spending record?',
-      content: `Category: ${values.category}, Amount: ${values.amount}, Recurrence: ${values.recurrence}`,
+      title: 'Do you want to add this spending record?',
+      content: `Category: ${values.category}, Amount: ${values.amount}`,
       onOk() {
-        // TODO: Handle the add logic here. Update the backend/API to add the recurring record.
-        console.log(`Added recurring record:`, values);
+        // TODO: Handle the add logic here. Update the backend/API to add the record.
+        console.log(`Added record:`, values);
         form.resetFields();  // Reset the form after adding
       },
       onCancel() {
@@ -25,17 +38,19 @@ const AddRecurringSpending: React.FC = () => {
 
   return (
     <div style={{ padding: '20px' }}>
-      <Typography.Title level={4} style={{ color: 'red' }}>Add New Recurring Spending Record</Typography.Title>
+      <Typography.Title level={4} style={{ color: 'red' }}>Add New Spending Record</Typography.Title>
+      
+      {/* Form to input details about the spending */}
       <Form layout="vertical" onFinish={handleAdd} form={form}>
-        <Form.Item 
-          label="Category" 
+        <Form.Item
+          label="Category"
           name="category"
           rules={[{ required: true, message: 'Please input the category!' }]}
         >
-          <Input placeholder="e.g., Food, Rent, Utilities" />
+          <Input placeholder="e.g., Food, Rent, Entertainment" />
         </Form.Item>
-        <Form.Item 
-          label="Amount" 
+        <Form.Item
+          label="Amount"
           name="amount"
           rules={[{ required: true, message: 'Please input the amount!' }]}
         >
@@ -44,28 +59,16 @@ const AddRecurringSpending: React.FC = () => {
         <Form.Item label="Description" name="description">
           <Input placeholder="Description of spending" />
         </Form.Item>
-        <Form.Item 
-          label="Start Date" 
-          name="startDate"
-          rules={[{ required: true, message: 'Please select the start date!' }]}
+        <Form.Item
+          label="Date"
+          name="date"
+          rules={[{ required: true, message: 'Please select the date!' }]}
         >
           <DatePicker style={{ width: '100%' }} />
         </Form.Item>
-        <Form.Item 
-          label="Recurrence" 
-          name="recurrence"
-          rules={[{ required: true, message: 'Please select the recurrence!' }]}
-        >
-          <Select placeholder="Select recurrence">
-            <Option value="daily">Daily</Option>
-            <Option value="weekly">Weekly</Option>
-            <Option value="monthly">Monthly</Option>
-            <Option value="annually">Annually</Option>
-          </Select>
-        </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Add Recurring Record
+            Add Record
           </Button>
         </Form.Item>
       </Form>
@@ -73,4 +76,4 @@ const AddRecurringSpending: React.FC = () => {
   );
 };
 
-export default AddRecurringSpending;
+export default AddSpendingRecord;

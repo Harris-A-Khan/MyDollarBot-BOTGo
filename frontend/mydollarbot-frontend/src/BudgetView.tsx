@@ -1,3 +1,10 @@
+/**
+ * BudgetView Component
+ * 
+ * This component provides a view of the user's budget data and spendings.
+ * It allows users to filter spendings by category and displays the budget data in tabular format.
+ * It uses the Ant Design library for UI components.
+ */
 import React, { useState } from 'react';
 import { Table, Card, Divider, Typography, Select } from 'antd';
 
@@ -16,8 +23,9 @@ const mockData = {
 };
 
 function BudgetView() {
+  // State to track the selected category for filtering spendings
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
+  // Filter spendings based on the selected category
   const filteredSpendings = selectedCategory
     ? mockData.spendings.filter(s => s.category === selectedCategory)
     : mockData.spendings;

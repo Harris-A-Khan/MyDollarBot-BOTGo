@@ -3,9 +3,23 @@ import { Form, Input, Button, InputNumber, DatePicker, Modal, Typography } from 
 
 const { confirm } = Modal;
 
+/**
+ * AddSpendingRecord Component
+ * 
+ * This component provides functionality to add a new spending record.
+ * It uses the Ant Design library for UI components.
+ * Users can input details about the spending, such as category, amount, description, and date.
+ * Before adding, a confirmation modal is shown to the user.
+ */
 const AddSpendingRecord: React.FC = () => {
+  // Using Ant Design's useForm hook to manage form operations
   const [form] = Form.useForm();
 
+  /**
+   * Handles the submission of the form.
+   * This function can be updated to handle the logic for adding the record to the backend/API.
+   * Before adding, a confirmation modal is shown to the user.
+   */
   const handleAdd = (values: any) => {
     // Confirm before adding
     confirm({
@@ -25,7 +39,8 @@ const AddSpendingRecord: React.FC = () => {
   return (
     <div style={{ padding: '20px' }}>
       <Typography.Title level={4} style={{ color: 'red' }}>Add New Spending Record</Typography.Title>
-
+      
+      {/* Form to input details about the spending */}
       <Form layout="vertical" onFinish={handleAdd} form={form}>
         <Form.Item
           label="Category"

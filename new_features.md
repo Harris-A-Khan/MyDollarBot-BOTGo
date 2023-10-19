@@ -32,7 +32,7 @@
 
             *   [ ] delete/erase all records
 
-            *   [ ] edit spending
+            *   [x] edit spending
 
             *   [x] category functionality (ARUL)
 

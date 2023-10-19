@@ -8,10 +8,18 @@ import BudgetDelete from './BudgetDelete';
 import AddSpendingRecord from './AddSpendingRecord';
 import AddRecurringSpending from './AddRecurringSpending';
 import ManageCategories from './ManageCategories';
+import EditSpending from './EditSpending';
 
+// Importing UI components from antd
 import { Tabs, Table, Card, Divider, Typography } from 'antd'; // Importing antd components
 const { TabPane } = Tabs;
 
+/**
+ * App Component
+ * 
+ * This is the main component of the application. It fetches the budget data 
+ * and displays different functionalities in separate tabs.
+ */
 function App() {
   const [data, setData] = useState<any>(null);
 
@@ -94,6 +102,10 @@ function App() {
 
             <TabPane tab="Manage Categories" key="6">
               <ManageCategories />
+            </TabPane>
+
+            <TabPane tab="Edit Spending" key="7">
+              <EditSpending />
             </TabPane>
           </Tabs>
 

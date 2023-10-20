@@ -1,7 +1,7 @@
-from code import budget_update
+import budget_update
 import mock
 from mock import ANY
-from mock.mock import patch
+from unittest.mock import patch
 from telebot import types
 
 

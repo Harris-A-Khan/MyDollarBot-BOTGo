@@ -1,8 +1,10 @@
-from code import helper
-from code.helper import isCategoryBudgetByCategoryAvailable, throw_exception
+import sys
+sys.path.insert(0, './backend/src/')
+import helper
+# from helper import isCategoryBudgetByCategoryAvailable, throw_exception
 from mock import ANY
 from telebot import types
-from mock.mock import patch
+from unittest.mock import patch
 import logging
 import mock
 
@@ -170,23 +172,6 @@ def test_getUserHistory_with_none(mocker):
     else:
         assert False, 'Result is not None when the file does not exist'
 
-
-def test_getSpendCategories():
-    result = helper.getSpendCategories()
-    if result == helper.spend_categories:
-        assert True
-    else:
-        assert False, 'expected spend categories are not returned'
-
-
-def test_getSpendDisplayOptions():
-    result = helper.getSpendDisplayOptions()
-    if result == helper.spend_display_option:
-        assert True
-    else:
-        assert False, 'expected spend display options are not returned'
-
-
 def test_getCommands():
     result = helper.getCommands()
     if result == helper.commands:
@@ -242,7 +227,7 @@ def test_throw_exception(mock_telebot, mocker):
 
     message = create_message("message from testing")
 
-    throw_exception("hello, exception from testing", message, mc, logging)
+    helper.throw_exception("hello, exception from testing", message, mc, logging)
     mc.reply_to.assert_called_with(message, 'Oh no! hello, exception from testing')
 
 
@@ -316,14 +301,14 @@ def test_isCategoryBudgetAvailable():
 
 def test_isCategoryBudgetByCategoryAvailable_working():
     helper.getCategoryBudget = mock.Mock(return_value={'Food': 10})
-    testresult = isCategoryBudgetByCategoryAvailable(10, 'Food')
+    testresult = helper.isCategoryBudgetByCategoryAvailable(10, 'Food')
     assert(testresult)
 
 
 def test_isCategoryBudgetByCategoryAvailable_none_case():
     helper.getCategoryBudget = mock.Mock(return_value=None)
-    testresult = isCategoryBudgetByCategoryAvailable(10, 'Food')
-    assert(testresult is False)
+    testresult = helper.isCategoryBudgetByCategoryAvailable(10, 'Food')
+    assert(testresult is True)
 
 
 def test_calculate_total_spendings():

@@ -4,7 +4,7 @@
 
     *   [ ] Ensure documentation reflects this change
 
-*   [x] GET TESTS WORKING AGAIN ( they do not run at the moment)&#x20;
+*   [x] GET TESTS WORKING AGAIN ( they do not run at the moment)&#x20; (sanjit)
 
 *   [ ] Create a GUI page that shows all the budget information at once
 
@@ -16,15 +16,15 @@
 
         *   There should be a page or function for every function that already exists in the app, this means we need a function for:
 
-            *   [ ] budget view (with per category view)
+            *   [x] budget view (with per category view)(sanjit)
 
-            *   [ ] budget update (with per category update)
+            *   [x] budget update (with per category update)(sanjit)
 
-            *   [ ] budget delete (with per category delete)
+            *   [x] budget delete (with per category delete)(sanjit)
 
-            *   [ ] add a new spending record
+            *   [x] add a new spending record(sanjit)
 
-            *   [ ] add a recurring spending record
+            *   [x] add a recurring spending record(sanjit)
 
             *   [ ] display the sum of the monthly expenditure
 
@@ -32,17 +32,17 @@
 
             *   [ ] delete/erase all records
 
-            *   [ ] edit spending
+            *   [x] edit spending
 
-            *   [ ] category functionality
+            *   [x] category functionality (ARUL)
 
-                *   [ ] add new category
+                *   [x] add new category
 
-                *   [ ] delete new category
+                *   [x] delete new category
 
-                *   [ ] show all custom categories
+                *   [x] show all custom categories
 
-*   [x] Create a telegram functionality that opens the GUI webpage
+*   [x] Create a telegram functionality that opens the GUI webpage (sanjit)
 
 *   [ ] Potentially switch to ChatGPT plugin chat rather than the python script, this could mean translating the python to javascript or integrating python with javascript
 

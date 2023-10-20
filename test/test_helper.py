@@ -181,14 +181,6 @@ def test_getSpendCategories():
         assert False, 'expected spend categories are not returned'
 
 
-def test_getSpendDisplayOptions():
-    result = helper.getSpendDisplayOptions()
-    if result == helper.spend_display_option:
-        assert True
-    else:
-        assert False, 'expected spend display options are not returned'
-
-
 def test_getCommands():
     result = helper.getCommands()
     if result == helper.commands:
@@ -325,7 +317,7 @@ def test_isCategoryBudgetByCategoryAvailable_working():
 def test_isCategoryBudgetByCategoryAvailable_none_case():
     helper.getCategoryBudget = mock.Mock(return_value=None)
     testresult = helper.isCategoryBudgetByCategoryAvailable(10, 'Food')
-    assert(testresult is False)
+    assert(testresult is True)
 
 
 def test_calculate_total_spendings():

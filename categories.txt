@@ -1,1 +1,1 @@
-Food,Groceries,Utilities,Transport,Shopping,Misc
+Groceries,Utilities,Transport,Shopping,Misc

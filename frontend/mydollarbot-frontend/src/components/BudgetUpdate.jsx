@@ -4,7 +4,7 @@ import { getAllCategories, updateCategoryBudget } from '../api';
 
 const { Option } = Select;
 
-const BudgetUpdate = () => {
+const BudgetUpdate = ({ userId }) => {
   const [category, setCategory] = useState('');
   const [allocated, setAllocated] = useState(0);
   const [categories, setCategories] = useState([]);
@@ -17,7 +17,7 @@ const BudgetUpdate = () => {
 
   const handleSubmit = async () => {
     try {
-      await updateCategoryBudget("6577837440", category, allocated.toString());
+      await updateCategoryBudget(userId, category, allocated.toString());
       // reset form
       setCategory('');
       setAllocated(0);

@@ -6,7 +6,7 @@ import { getAllCategories, addRecord } from '../api';
 const { Option } = Select;
 const { confirm } = Modal;
 
-const AddSpendingRecord = () => {
+const AddSpendingRecord = ({ userId }) => {
   const [form] = Form.useForm();
   const [categories, setCategories] = useState([]);
   const [isRecurring, setIsRecurring] = useState(false);
@@ -33,7 +33,7 @@ const AddSpendingRecord = () => {
           let date = moment(values.date);
 
           for (let i = 0; i < numberOfMonths; i++) {
-            await addRecord("6577837440", date.format('DD-MMM-YYYY HH:mm'), values.category, values.amount);
+            await addRecord(userId, date.format('DD-MMM-YYYY HH:mm'), values.category, values.amount);
             date.add(1, 'month');  // Increment the date by one month
           }
 

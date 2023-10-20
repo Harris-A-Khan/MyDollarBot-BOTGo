@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Table, Divider, Typography, Select } from 'antd';
 import { getAllBudgetData, getAllCategories } from '../api';
 
-function BudgetView() {
+
+function BudgetView({ userId }) {
   const [budgetData, setBudgetData] = useState([]);
   const [spendingsData, setSpendingsData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -10,7 +11,7 @@ function BudgetView() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await getAllBudgetData("6577837440");
+      const response = await getAllBudgetData(userId);
       const transformedBudgetData = Object.entries(response.budget.category).map(([key, value]) => ({
         category: key,
         allocated: parseFloat(value),
@@ -42,7 +43,7 @@ function BudgetView() {
     };
     
     fetchData();
-  }, []);
+  }, [userId]);
 
   const filteredSpendings = selectedCategory
     ? spendingsData.filter(s => s.category === selectedCategory)
@@ -53,6 +54,7 @@ function BudgetView() {
   const totalRemaining = budgetData.reduce((acc, item) => acc + item.remaining, 0);
 
   return (
+    
     <div style={{ padding: '20px' }}>
       <Typography.Title level={4} style={{ color: 'red' }}>Budget Data</Typography.Title>
       <Table dataSource={[...budgetData, { category: 'Total', allocated: totalAllocated, spent: totalSpent, remaining: totalRemaining }]} pagination={false} rowKey="category">

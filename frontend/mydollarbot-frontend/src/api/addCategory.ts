@@ -9,6 +9,5 @@ export async function addCategory(category: string): Promise<Response> {
   });
 
   const data = await response.json();
-  console.log("trying to add this category", data);
   return data;
 }

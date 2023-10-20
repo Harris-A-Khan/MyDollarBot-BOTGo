@@ -18,8 +18,7 @@ const BudgetUpdate: React.FC = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await updateCategoryBudget("6577837440", category, allocated.toString());
-      console.log(response);
+      await updateCategoryBudget("6577837440", category, allocated.toString());
       // reset form 
       setCategory('');
       setAllocated(0);

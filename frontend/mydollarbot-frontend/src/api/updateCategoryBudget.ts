@@ -12,7 +12,6 @@ export async function updateCategoryBudget(user_id: string, category: string, ne
     });
   
     const data = await response.json();
-    console.log("Trying to update category budget", data);
     return data;
   }
   

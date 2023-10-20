@@ -8,7 +8,6 @@ export async function deleteCategory(category: string | null): Promise<Response>
     });
 
     const data = await response.json();
-    console.log(data);
     return data;    
 }
 

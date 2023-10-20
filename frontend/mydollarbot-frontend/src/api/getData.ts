@@ -12,7 +12,6 @@ export async function getAllBudgetData(userId: string): Promise<Response> {
   });
 
   const data = await response.json();
-  console.log(data);
   return data;
 }
 
@@ -20,6 +19,5 @@ export async function getAllCategories(): Promise<Response> {
   const response = await fetch(`/api/all-categories`);
 
   const data = await response.json();
-  console.log(data);
   return data;
 }

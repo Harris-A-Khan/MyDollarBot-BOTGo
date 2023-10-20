@@ -21,7 +21,7 @@ function ManageCategories() {
     setNewCategory('');
   };
 
-  const handleDeleteCategory = async (category: string) => {
+  const handleDeleteCategory = async category => {
     await deleteCategory(category);
     const categoryData = await getAllCategories();
     setCategories(categoryData);
@@ -46,10 +46,9 @@ function ManageCategories() {
         <Table.Column
           title="Action"
           key="action"
-          render={(text, record: { name: string }) => (
+          render={(text, record) => (
             <Popconfirm title="Sure to delete?" onConfirm={() => handleDeleteCategory(record.name)}>
-              <Button danger onClick={() => handleDeleteCategory(record.name)}>Delete</Button>
-
+              <Button danger>Delete</Button>
             </Popconfirm>
           )}
         />

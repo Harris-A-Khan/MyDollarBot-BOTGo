@@ -1,8 +1,8 @@
 import datetime
 
-from mock import patch
+from unittest.mock import patch
 from telebot import types
-from main import edit
+import edit
 
 MOCK_CHAT_ID = 101
 MOCK_USER_DATA = {

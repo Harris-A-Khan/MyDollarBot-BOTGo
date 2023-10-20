@@ -7,6 +7,10 @@ choices = ['Date', 'Category', 'Cost']
 plot = ['Bar with budget', 'Pie','Bar without budget']
 spend_display_option = ['Day', 'Month']
 spend_estimate_option = ['Next day', 'Next month']
+
+# backend/src/helper.py
+spend_categories = ["Food", "Groceries", "Utilities", "Transport", "Shopping", "Miscellaneous"]
+
 update_options = {
     'continue': 'Continue',
     'exit': 'Exit'
@@ -48,7 +52,8 @@ commands = {
     'delete': 'Clear/Erase all your records',
     'edit': 'Edit/Change spending details',
     'budget': 'Add/Update/View/Delete budget',
-    'category': 'Add/Delete/Show custom categories'
+    'category': 'Add/Delete/Show custom categories',
+    'web' : 'Open MyDollarBot-BOTGo Web Client'
 }
 
 dateFormat = '%d-%b-%Y'

@@ -107,7 +107,7 @@ The location of the backend pages is in the backend folder in the project
 
 4.  **Run the Application:**
 
-    *   Start your application with `python ./backend/src/app.py`, replacing `python` with `python3` or `python<version>` if needed.
+    *   Start your application with `python ./backend/src/api.py`, replacing `python` with `python3` or `python<version>` if needed.
 
     *   Ensure the telegram bot is also running, README.md contains this information
 

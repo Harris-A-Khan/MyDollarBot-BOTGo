@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Select, Typography} from 'antd';
+import { getAllCategories, updateCategoryBudget } from '../api';
 
 const { Option } = Select;
 
@@ -7,11 +8,24 @@ const BudgetUpdate: React.FC = () => {
   const [category, setCategory] = useState<string>('');
   const [allocated, setAllocated] = useState<number>(0);
 
-  const categories = ['Food', 'Rent', 'Entertainment']; // Replace with categories from API if needed
+  const [categories, setCategories] = useState<string[]>([]);
 
-  const handleSubmit = () => {
-    // TODO: Handle the update logic here. Update the backend/API with the new allocated amount.
-    console.log(`Updated ${category} with allocated amount: ${allocated}`);
+  useEffect(() => {
+    getAllCategories().then((data) => {
+      setCategories(data);
+    });
+  }, []);
+
+  const handleSubmit = async () => {
+    try {
+      const response = await updateCategoryBudget("6577837440", category, allocated.toString());
+      console.log(response);
+      // reset form 
+      setCategory('');
+      setAllocated(0);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

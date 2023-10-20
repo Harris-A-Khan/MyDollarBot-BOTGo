@@ -1,22 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button, Select, Modal, Typography } from 'antd';
+import { getAllCategories, updateCategoryBudget } from '../api';
 
 const { Option } = Select;
 const { confirm } = Modal;
 
 const BudgetDelete: React.FC = () => {
     const [category, setCategory] = useState<string | null>('');
+    const [categories, setCategories] = useState<string[]>([]);
 
-    const categories = ['Food', 'Rent', 'Entertainment']; // Replace with categories from API if needed
+    useEffect(() => {
+        // Fetch the categories from API
+        const fetchCategories = async () => {
+            try {
+                const response = await getAllCategories();
+                setCategories(response);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
 
     const handleDelete = () => {
         // Confirm before deletion
         confirm({
             title: 'Do you want to delete this category?',
             content: `Category: ${category}`,
-            onOk() {
-                // TODO: Handle the delete logic here. Update the backend/API to delete the category.
-                console.log(`Deleted category: ${category}`);
+            async onOk() {
+                try {
+                    const response = await updateCategoryBudget("YOUR_USER_ID", category, "0");
+                    console.log(`Deleted category budget: ${category}`, response);
+                } catch (error) {
+                    console.error('Error deleting category budget:', error);
+                }
             },
             onCancel() {
                 console.log('Cancel');
@@ -26,7 +44,7 @@ const BudgetDelete: React.FC = () => {
 
     return (
         <div style={{ padding: '20px' }}>
-      <Typography.Title level={4} style={{ color: 'red' }}>Delete Budget by Category</Typography.Title>
+            <Typography.Title level={4} style={{ color: 'red' }}>Delete Budget by Category</Typography.Title>
             <Form layout="vertical" onFinish={handleDelete}>
                 <Form.Item label="Category">
                     <Select

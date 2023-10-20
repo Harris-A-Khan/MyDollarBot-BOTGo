@@ -146,6 +146,47 @@ def get_all_data():
         return jsonify({"message": "Error processing request", "error": str(e)}), 500
     
 
+## UPDATE BUDGET
+@app.route("/update-category-budget", methods=['POST'])
+def update_category_budget():
+    user_id = request.json.get('user_id')
+    if not user_id:
+        return jsonify({"message": "user_id parameter is required"}), 400
+    
+    category = request.json.get('category')
+    if not category:
+        return jsonify({"message": "category parameter is required"}), 400
+    
+    new_budget = request.json.get('new_budget')
+    if not new_budget:
+        return jsonify({"message": "new_budget parameter is required"}), 400
+    
+    try:
+        # open expense_record.json 
+        with open('expense_record.json', 'r') as f:
+            data = f.read()
+            obj = json.loads(data)
+
+            # look for the user_id and return the data
+            if user_id in obj:
+                # update the budget
+                if float(new_budget) > 0 and obj[user_id]["budget"]["category"][category]:
+                    obj[user_id]["budget"]["category"][category] = str(float(new_budget))
+                else:
+                    del obj[user_id]["budget"]["category"][category]
+
+
+                # write the updated data back to expense_record.json
+                with open('expense_record.json', 'w') as f:
+                    f.write(json.dumps(obj))
+
+                return jsonify({"message": "Budget updated successfully."}), 200
+            else: 
+                return jsonify({"message": "user not found"}), 404
+    except: 
+        return jsonify({"message": "Error processing request"}), 500
+
+
 ## FOR THE CATEGORIES
     
 @app.route("/all-categories", methods=['GET'])
@@ -199,6 +240,8 @@ def add_category():
         f.write(','.join(categories))
 
     return jsonify({"message": "Category added successfully."})
+
+
 
 
 if __name__ == '__main__':

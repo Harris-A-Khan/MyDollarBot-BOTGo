@@ -1,5 +1,12 @@
 # 💰 TrackMyDollar V3.0 - Budget On The Go(BOTGo) 💰
 
+<hr>
+<p align="center">
+<a><img  height=360 width=550 
+  src="https://github.com/deekay2310/MyDollarBot/blob/c56b4afd4fd5bbfffea0d0a4aade58596a5cb678/docs/0001-8711513694_20210926_212845_0000.png" alt="Expense tracking made easy!"></a>
+</p>
+<hr>
+
 ![MIT license](https://img.shields.io/badge/License-MIT-green.svg)
 [![Platform](https://img.shields.io/badge/Platform-Telegram-blue)](https://desktop.telegram.org/)
 ![GitHub](https://img.shields.io/badge/Language-Python-blue.svg)
@@ -43,7 +50,7 @@ With simple commands, this bot allows you to:
 
 *   Created react front end app that calls the flask app serving the api endpoint
 
-*   Includes a page or function for:
+*   Includes a web page or function for:
 
     &#x20;   budget view with per category view\
     &#x20;   budget update (with per category update\
@@ -59,13 +66,13 @@ With simple commands, this bot allows you to:
 
 Please refer to the issue list available [here](https://github.com/prithvish-doshi-17/MyDollarBot-BOTGo/issues) to see what more can be done to make MyDollarBot better. Please refer to the MyDollarBot project present [here](https://github.com/prithvish-doshi-17/MyDollarBot-BOTGo/projects) to have a look at the tasks to be done, tasks currently in progress and tasks already done.
 
-Additionally, there is still some functionality needed to be added in the Web client including display the sum of the monthly expenditure, estimate the expenditure for the next month ,delete/erase all records. Deployment so the Web Client doesn't only run locally is also a future task: potentially deploy the app to Google Cloud Platform and having a continious integration solution.
+Additionally, there is still some functionality needed to be added in the web client including display the sum of the monthly expenditure, estimate the expenditure for the next month ,delete/erase all records. Deployment so the Web Client doesn't only run locally is also a future task: potentially deploy the app to Google Cloud Platform and having a continious integration solution.
 
 ## Demo
 
 <https://user-images.githubusercontent.com/72677919/140454147-f879010a-173b-47b9-9cfb-a389171924de.mp4>
 
-# About MyDollarBot's frontend/GUI
+## About MyDollarBot's web client
 
 **Web-based GUI:** This feature represents an interface upgrade from a Telegram bot, which previously have handled user inputs for budget management through text commands, to a more intuitive web-based platform. The web GUI allows for easier navigation, more complex interactions, and a better visual representation of the user's budget data.
 
@@ -75,15 +82,15 @@ Additionally, there is still some functionality needed to be added in the Web cl
 
 *   **Installation & Setup:** Users need to follow specific installation instructions to get the bot running. This process involves setting up a Telegram bot account, configuring it to work with the user's budget program, and ensuring it's live and capable of receiving commands. Additionally the user has to run the backend Flask API file and the frontend React. Details for this is listed below.
 
-# Location of Code for this Feature
+## Location of Code for this Feature
 
 The location of the frontend components is in the frontend folder in the project
 
 The location of the backend pages is in the backend folder in the project
 
-# Run Instructions
+## Run Instructions
 
-## How to run the BackEnd
+## How to run the Web Client BackEnd
 
 1.  **Access Project Directory:**
 
@@ -103,7 +110,7 @@ The location of the backend pages is in the backend folder in the project
 
     *   Ensure the telegram bot is also running, README.md contains this information
 
-## How to run the FrontEnd
+## How to run the Web Client FrontEnd
 
 1.  **Node.js Installation:**
 
@@ -190,3 +197,13 @@ Locally, we use the coverage package in python for code coverage. The commands t
 ## Notes:
 
 You can download and install the Telegram desktop application for your system from the following site: <https://desktop.telegram.org/>
+
+
+<hr>
+<p>Title:'Track My Dollar'</p>
+<p>Version: '3.1'</p>
+<p>Description: 'An easy to use Telegram Bot to track everyday expenses'</p>
+<p>Authors(Iteration 4):'Sanjit, Arul, Harris, Sarvesh'</p>
+<p>Authors(Iteration 3):'Vraj, Alex, Leo, Prithvish, Seeya'</p>
+<p>Authors(Iteration 2):'Athithya, Subramanian, Ashok, Zunaid, Rithik'</p>
+<p>Authors(Iteration 1):'Dev, Prakruthi, Radhika, Rohan, Sunidhi'</p>

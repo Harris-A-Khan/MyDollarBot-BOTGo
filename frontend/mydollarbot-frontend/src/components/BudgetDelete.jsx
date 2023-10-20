@@ -5,7 +5,7 @@ import { getAllCategories, updateCategoryBudget } from '../api';
 const { Option } = Select;
 const { confirm } = Modal;
 
-const BudgetDelete = () => {
+const BudgetDelete = ({ userId }) => {
     const [category, setCategory] = useState(null);
     const [categories, setCategories] = useState([]);
 
@@ -30,7 +30,7 @@ const BudgetDelete = () => {
             content: `Category: ${category}`,
             async onOk() {
                 try {
-                    const response = await updateCategoryBudget("6577837440", category, "-1");
+                    const response = await updateCategoryBudget(userId, category, "-1");
                     console.log(`Deleted category budget: ${category}`, response);
                 } catch (error) {
                     console.error('Error deleting category budget:', error);

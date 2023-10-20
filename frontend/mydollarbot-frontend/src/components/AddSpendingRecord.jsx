@@ -5,9 +5,9 @@ import { getAllCategories, addRecord } from '../api';
 const { Option } = Select;
 const { confirm } = Modal;
 
-const AddSpendingRecord: React.FC = () => {
+const AddSpendingRecord = () => {
   const [form] = Form.useForm();
-  const [categories, setCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     // Fetch all categories and update state
@@ -23,7 +23,7 @@ const AddSpendingRecord: React.FC = () => {
     fetchCategories();
   }, []);
 
-  const handleAdd = (values: any) => {
+  const handleAdd = (values) => {
     confirm({
       title: 'Do you want to add this spending record?',
       content: `Category: ${values.category}, Amount: ${values.amount}`,

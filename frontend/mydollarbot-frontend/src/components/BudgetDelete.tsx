@@ -30,7 +30,7 @@ const BudgetDelete: React.FC = () => {
             content: `Category: ${category}`,
             async onOk() {
                 try {
-                    const response = await updateCategoryBudget("YOUR_USER_ID", category, "0");
+                    const response = await updateCategoryBudget("6577837440", category, "-1");
                     console.log(`Deleted category budget: ${category}`, response);
                 } catch (error) {
                     console.error('Error deleting category budget:', error);

@@ -4,7 +4,7 @@ from flask import jsonify, request
 import telebot
 from collections import namedtuple
 import logging
-from add import run, add_user_record, post_category_selection, post_amount_input
+from add import run, post_category_selection, post_amount_input
 import json
 from jproperties import Properties
 from flask_cors import CORS
@@ -81,11 +81,11 @@ def data():
 @app.route('/budgets')
 def budgets():
     # # Sample data for testing
-    # budgets = [
-    #     {"category": "Food", "allocated": 500, "spent": 300, "remaining": 200},
-    #     {"category": "Rent", "allocated": 1000, "spent": 1000, "remaining": 0},
-    #     {"category": "Entertainment", "allocated": 100, "spent": 50, "remaining": 50}
-    # ]
+    budgets = [
+        {"category": "Food", "allocated": 500, "spent": 300, "remaining": 200},
+        {"category": "Rent", "allocated": 1000, "spent": 1000, "remaining": 0},
+        {"category": "Entertainment", "allocated": 100, "spent": 50, "remaining": 50}
+    ]
 
     return jsonify(budgets)
 
@@ -170,11 +170,12 @@ def update_category_budget():
             # look for the user_id and return the data
             if user_id in obj:
                 # update the budget
-                if float(new_budget) > 0 and obj[user_id]["budget"]["category"][category]:
-                    obj[user_id]["budget"]["category"][category] = str(float(new_budget))
-                else:
+                if float(new_budget) < 0:
                     del obj[user_id]["budget"]["category"][category]
+                else:
+                    obj[user_id]["budget"]["category"][category] = str(float(new_budget))
 
+                
 
                 # write the updated data back to expense_record.json
                 with open('expense_record.json', 'w') as f:

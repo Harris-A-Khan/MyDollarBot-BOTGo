@@ -2,12 +2,12 @@ import './App.css'
 import { useEffect, useState } from 'react';
 import { getAllBudgetData, getAllCategories, getDummyData } from './api/index'
 
-import BudgetView from './BudgetView';
-import BudgetUpdate from './BudgetUpdate';
-import BudgetDelete from './BudgetDelete';
-import AddSpendingRecord from './AddSpendingRecord';
-import AddRecurringSpending from './AddRecurringSpending';
-import ManageCategories from './ManageCategories';
+import BudgetView from './components/BudgetView';
+import BudgetUpdate from './components/BudgetUpdate';
+import BudgetDelete from './components/BudgetDelete';
+import AddSpendingRecord from './components/AddSpendingRecord';
+import AddRecurringSpending from './components/AddRecurringSpending';
+import ManageCategories from './components/ManageCategories';
 
 import { Tabs, Divider, Typography } from 'antd'; // Importing antd components
 const { TabPane } = Tabs;

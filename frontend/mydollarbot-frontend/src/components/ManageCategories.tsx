@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Input, Divider, Typography, Popconfirm } from 'antd';
-import { getAllCategories } from './api';
+import { getAllCategories } from '../api';
 
 const dummyCategories = ['Food', 'Rent', 'Entertainment'];
 

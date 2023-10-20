@@ -1,6 +1,7 @@
 import './App.css'
 import { useEffect, useState } from 'react';
 import { getAllBudgetData, getAllCategories, getDummyData } from './api/index'
+import { useParams } from 'react-router-dom';
 
 import BudgetView from './components/BudgetView';
 import BudgetUpdate from './components/BudgetUpdate';
@@ -14,19 +15,20 @@ const { TabPane } = Tabs;
 function App() {
   const [data, setData] = useState<any>(null);
   const [categories, setCategories] = useState<any>(null);
+  const { user_id } = useParams<{ user_id: string }>();
 
   useEffect(() => {
     async function fetchData() {
       // const response = await getDummyData();
       // const response = await getAllBudgetData("6577837440");
-      const data = await getAllBudgetData("6577837440");
+      const data = await getAllBudgetData(user_id);
       setData(data);
 
       const categoryData = await getAllCategories();
       setCategories(categoryData);
     }
     fetchData();
-  }, []);
+  }, [user_id]);
 
   // Columns for the budget table
   const budgetColumns = [
@@ -77,23 +79,22 @@ function App() {
 
           <Tabs defaultActiveKey="1">
             <TabPane tab="Budget View" key="1">
-              <BudgetView />
+              <BudgetView userId={user_id} />
             </TabPane>
-
             <TabPane tab="Budget Update" key="2">
-              <BudgetUpdate />
+              <BudgetUpdate userId={user_id}/>
             </TabPane>
 
             <TabPane tab="Budget Delete" key="3">
-              <BudgetDelete />
+              <BudgetDelete userId={user_id}/>
             </TabPane>
 
             <TabPane tab="Add Spending Record" key="4">
-              <AddSpendingRecord />
+              <AddSpendingRecord userId={user_id}/>
             </TabPane>
 
             <TabPane tab="Manage Categories" key="6">
-              <ManageCategories />
+              <ManageCategories userId={user_id}/>
             </TabPane>
           </Tabs>
 

@@ -18,6 +18,7 @@
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/prithvish-doshi-17/MyDollarBot-BOTGo)](https://github.com/prithvish-doshi-17/MyDollarBot-BOTGo/issues?q=is%3Aissue+is%3Aclosed)
 
 ![Fork](https://img.shields.io/github/forks/deekay2310/MyDollarBot?style=social)
+<hr>
 
 ## About TrackMyDollar
 
@@ -66,7 +67,7 @@ With simple commands, this bot allows you to:
 
 Please refer to the issue list available [here](https://github.com/prithvish-doshi-17/MyDollarBot-BOTGo/issues) to see what more can be done to make MyDollarBot better. Please refer to the MyDollarBot project present [here](https://github.com/prithvish-doshi-17/MyDollarBot-BOTGo/projects) to have a look at the tasks to be done, tasks currently in progress and tasks already done.
 
-Additionally, there is still some functionality needed to be added in the web client including display the sum of the monthly expenditure, estimate the expenditure for the next month ,delete/erase all records. Deployment so the Web Client doesn't only run locally is also a future task: potentially deploy the app to Google Cloud Platform and having a continious integration solution.
+Additionally, there is still some functionality needed to be added in the web client including display the sum of the monthly expenditure, estimate the expenditure for the next month, delete/erase all records. Deployment so the Web Client doesn't only run locally is also a future task (potentially deploy the app to Google Cloud Platform and having a continious integration solution).
 
 ## Demo
 

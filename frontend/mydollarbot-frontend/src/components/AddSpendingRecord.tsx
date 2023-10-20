@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, InputNumber, DatePicker, Modal, Typography } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Form, Input, Button, InputNumber, DatePicker, Modal, Typography, Select } from 'antd';
+import { getAllCategories, addRecord } from '../api';
 
+const { Option } = Select;
 const { confirm } = Modal;
 
 const AddSpendingRecord: React.FC = () => {
   const [form] = Form.useForm();
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Fetch all categories and update state
+    async function fetchCategories() {
+      try {
+        const data = await getAllCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error('Failed to fetch categories:', error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
 
   const handleAdd = (values: any) => {
-    // Confirm before adding
     confirm({
       title: 'Do you want to add this spending record?',
       content: `Category: ${values.category}, Amount: ${values.amount}`,
-      onOk() {
-        // TODO: Handle the add logic here. Update the backend/API to add the record.
-        console.log(`Added record:`, values);
-        form.resetFields();  // Reset the form after adding
+      async onOk() {
+        try {
+          await addRecord("6577837440", values.date.format('DD-MMM-YYYY HH:mm'), values.category, values.amount);
+          console.log('Added record:', values);
+          form.resetFields();  // Reset the form after adding
+        } catch (error) {
+          console.error('Error adding record:', error);
+        }
       },
       onCancel() {
         console.log('Cancel');
@@ -30,9 +50,15 @@ const AddSpendingRecord: React.FC = () => {
         <Form.Item
           label="Category"
           name="category"
-          rules={[{ required: true, message: 'Please input the category!' }]}
+          rules={[{ required: true, message: 'Please select the category!' }]}
         >
-          <Input placeholder="e.g., Food, Rent, Entertainment" />
+          <Select placeholder="Select a category">
+            {categories.map(category => (
+              <Option key={category} value={category}>
+                {category}
+              </Option>
+            ))}
+          </Select>
         </Form.Item>
         <Form.Item
           label="Amount"
@@ -41,15 +67,12 @@ const AddSpendingRecord: React.FC = () => {
         >
           <InputNumber style={{ width: '100%' }} placeholder="Enter amount" />
         </Form.Item>
-        <Form.Item label="Description" name="description">
-          <Input placeholder="Description of spending" />
-        </Form.Item>
         <Form.Item
           label="Date"
           name="date"
           rules={[{ required: true, message: 'Please select the date!' }]}
         >
-          <DatePicker style={{ width: '100%' }} />
+          <DatePicker format="DD-MMM-YYYY HH:mm" style={{ width: '100%' }} showTime />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">

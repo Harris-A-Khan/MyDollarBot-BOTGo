@@ -242,6 +242,51 @@ def add_category():
 
     return jsonify({"message": "Category added successfully."})
 
+## FOR ADDING RECORD
+
+@app.route("/add-record", methods=['POST'])
+def add_record():
+    user_id = request.json.get('user_id')
+    if not user_id:
+        return jsonify({"message": "user_id parameter is required"}), 400
+
+    date = request.json.get('date')
+    if not date:
+        return jsonify({"message": "date parameter is required"}), 400
+    
+    category = request.json.get('category')
+    if not category:
+        return jsonify({"message": "category parameter is required"}), 400
+
+    amount = request.json.get('amount')
+    if not amount:
+        return jsonify({"message": "amount parameter is required"}), 400
+    
+    try:
+        # Open expense_record.json
+        with open('expense_record.json', 'r') as f:
+            data = f.read()
+            obj = json.loads(data)
+
+            # Format the record
+            record = f"{date},{category},{amount}"
+
+            # Add record to user's list
+            if user_id in obj:
+                if "data" in obj[user_id]:
+                    obj[user_id]["data"].append(record)
+                else:
+                    return jsonify({"message": "No data for user"}), 404
+
+            # Write the updated data back to expense_record.json
+            with open('expense_record.json', 'w') as f:
+                f.write(json.dumps(obj))
+
+            return jsonify({"message": "Record added successfully."}), 200
+    except Exception as e:
+        return jsonify({"message": "Error processing request", "error": str(e)}), 500
+
+
 
 
 

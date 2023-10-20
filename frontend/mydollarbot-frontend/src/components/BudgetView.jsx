@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Card, Divider, Typography, Select } from 'antd';
+import { Table, Divider, Typography, Select } from 'antd';
 import { getAllBudgetData, getAllCategories } from '../api';
 
-
 function BudgetView() {
-  const [budgetData, setBudgetData] = useState<any[]>([]);
-  const [spendingsData, setSpendingsData] = useState<any[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [categories, setCategories] = useState<string[]>([]);
+  const [budgetData, setBudgetData] = useState([]);
+  const [spendingsData, setSpendingsData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await getAllBudgetData("6577837440");
       const transformedBudgetData = Object.entries(response.budget.category).map(([key, value]) => ({
         category: key,
-        allocated: parseFloat(value as string),
+        allocated: parseFloat(value),
         spent: 0,
-        remaining: parseFloat(value as string),
+        remaining: parseFloat(value),
       }));
       
-      const transformedSpendingsData = response.data.map((entry: string) => {
+      const transformedSpendingsData = response.data.map(entry => {
         const [date, category, amount] = entry.split(",");
         return {
           date,
@@ -69,7 +68,7 @@ function BudgetView() {
       <Select
         style={{ width: 200, marginBottom: 20 }}
         placeholder="Select a category"
-        onChange={(value: string) => setSelectedCategory(value)}
+        onChange={value => setSelectedCategory(value)}
         allowClear
         onClear={() => setSelectedCategory(null)}
       >

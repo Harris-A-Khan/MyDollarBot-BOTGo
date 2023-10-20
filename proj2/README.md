@@ -1,4 +1,6 @@
-# Project MyDollarBot-BOTGo Review
+# SCORECARD
+
+## Project MyDollarBot-BOTGo Review
 Self Assessment Total Score: ?/243
 
 | Item                                                                                     | Self-Assessment | Evidence                                                                 |
@@ -7,10 +9,10 @@ Self Assessment Total Score: ?/243
 | Workload is spread over the whole team                                                   |       3        |         Commit history in GitHub                                                     |
 | Number of commits                                                                        |        3         |               Commit history in GitHub                                                         |
 | Number of commits: by different people                                                   |         3        |            Commit history in GitHub                                                            |
-| Issues reports: there are **many**                                                       |                 |                                                                            |
-| Issues are being closed                                                                  |                |                                                              |
+| Issues reports: there are **many**                                                       |         3        |               Issues tab in GitHub                                                             |
+| Issues are being closed                                                                  |         3       |                     Issues tab in Github                                         |
 | DOI badge: exists                                                                        |        3         |              Github Repo                                                        |
-| Docs: doco generated, format not ugly                                                    |                 |                                                                      |
+| Docs: doco generated, format not ugly                                                    |       3          |                                                                      |
 | Docs: what: point descriptions of each class/function (in isolation)                     |                 |                                                                            |
 | Docs: how: for common use cases X,Y,Z mini-tutorials showing worked examples on how to do X,Y,Z |                 |                                                          |
 | Docs: why: docs tell a story, motivate the whole thing, deliver a punchline that makes you want to rush out and use the thing  |               |                                                                            | 
@@ -23,8 +25,8 @@ Self Assessment Total Score: ?/243
 | Other automated analysis tools                                                           |        3        |              Travis.yml file                     |
 | Test cases exist                                                                         |        3        |  Test folder in repo |
 | Test cases are routinely executed                                                        |               |                                |
-| The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  |  |                                       |
-| Issues are discussed before they are closed                                              |                |                                        |
+| The files CONTRIBUTING.md lists coding standards and lots of tips on how to extend the system without screwing things up  | 3 |      Contributing.md                                 |
+| Issues are discussed before they are closed                                              |       3         |             Issues tab                           |
 | Chat channel: exists                                                                     |                |                                         |
 | Test cases: a large proportion of the issues related to handling failing cases.          |                |                                         |
 | Evidence that the whole team is using the same tools: everyone can get to all tools and files  |  |                                   |
@@ -36,12 +38,12 @@ Self Assessment Total Score: ?/243
 | Does your website and documentation clearly describe the type of user who should use your software? |  |  |
 | Do you publish case studies to show how your software has been used by yourself and others? |  |  |
 | Is the name of your project/software unique? |  |  |
-| Is your project/software name free from trademark violations? |  |  |
+| Is your project/software name free from trademark violations? | 3 | No other project with same name |
 | Is your software available as a package that can be deployed without building it? |  |  |
-| Is your software available for free? |  |  |
-| Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository? |  |  |
-| Is your software hosted in an established, third-party repository like GitHub, BitBucket, LaunchPad or SourceForge? |  |  |
-| Is your documentation clearly available on your website or within your software? |  |  |
+| Is your software available for free? | 3 | Open source project hosted on GitHub |
+| Is your source code publicly available to download, either as a downloadable bundle or via access to a source code repository? | 3 | Open Source project hosted on GitHub |
+| Is your software hosted in an established, third-party repository like GitHub, BitBucket, LaunchPad or SourceForge? | 3 | Hosted on Github |
+| Is your documentation clearly available on your website or within your software? | 3 | Documentation within software |
 | Does your documentation include a "quick start" guide, that provides a short overview of how to use your software with some basic examples of use? |  |  |
 | If you provide more extensive documentation, does this provide clear, step-by-step instructions on how to deploy and use your software? |  |  |
 | Do you provide a comprehensive guide to all your software's commands, functions and options? |  |  |
@@ -83,4 +85,15 @@ Self Assessment Total Score: ?/243
 | Do you have a recommended citation for your software? |  |  |
 | Does your website or documentation include a project roadmap (a list of project and development milestones for the next 3, 6 and 12 months)? |  |  |
 | Does your website or documentation describe how your project is funded, and the period over which funding is guaranteed? |  |  |
-| Do you make timely announcements of the deprecation of components, APIs, etc.? |  |  |
+| Do you make timely announcements of the deprecation of components, APIs, etc.? | 3 |  |
+
+
+# LINK TO VIDEO
+
+# Additional Notes
+
+
+Much of code was completed using pair programming. We would meetup in the library and complete most of the features wokring together. The lack of commits from speciifc members is just because we would code and push from one machine.
+
+
+

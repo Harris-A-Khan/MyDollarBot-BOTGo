@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Select, Typography} from 'antd';
+import { Form, Input, Button, Select, Typography } from 'antd';
 import { getAllCategories, updateCategoryBudget } from '../api';
 
 const { Option } = Select;
 
-const BudgetUpdate: React.FC = () => {
-  const [category, setCategory] = useState<string>('');
-  const [allocated, setAllocated] = useState<number>(0);
-
-  const [categories, setCategories] = useState<string[]>([]);
+const BudgetUpdate = () => {
+  const [category, setCategory] = useState('');
+  const [allocated, setAllocated] = useState(0);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getAllCategories().then((data) => {
@@ -19,7 +18,7 @@ const BudgetUpdate: React.FC = () => {
   const handleSubmit = async () => {
     try {
       await updateCategoryBudget("6577837440", category, allocated.toString());
-      // reset form 
+      // reset form
       setCategory('');
       setAllocated(0);
     } catch (error) {

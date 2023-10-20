@@ -5,9 +5,9 @@ import { getAllCategories, updateCategoryBudget } from '../api';
 const { Option } = Select;
 const { confirm } = Modal;
 
-const BudgetDelete: React.FC = () => {
-    const [category, setCategory] = useState<string | null>('');
-    const [categories, setCategories] = useState<string[]>([]);
+const BudgetDelete = () => {
+    const [category, setCategory] = useState(null);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         // Fetch the categories from API

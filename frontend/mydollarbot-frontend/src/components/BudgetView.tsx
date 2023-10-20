@@ -1,31 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Card, Divider, Typography, Select } from 'antd';
+import { getAllBudgetData, getAllCategories } from '../api';
 
-const mockData = {
-  budget_data: [
-    { category: 'Food', allocated: 500, spent: 300, remaining: 200 },
-    { category: 'Rent', allocated: 1000, spent: 1000, remaining: 0 },
-    { category: 'Entertainment', allocated: 100, spent: 50, remaining: 50 },
-  ],
-  spendings: [
-    { category: 'Food', amount: 50, description: 'Dinner at ABC restaurant', date: '2023-10-01' },
-    { category: 'Food', amount: 30, description: 'Groceries', date: '2023-10-02' },
-    { category: 'Entertainment', amount: 50, description: 'Movie tickets', date: '2023-10-03' },
-  ],
-  categories: ['Food', 'Rent', 'Entertainment'],
-};
 
 function BudgetView() {
+  const [budgetData, setBudgetData] = useState<any[]>([]);
+  const [spendingsData, setSpendingsData] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await getAllBudgetData("6577837440");
+      const transformedBudgetData = Object.entries(response.budget.category).map(([key, value]) => ({
+        category: key,
+        allocated: parseFloat(value as string),
+        spent: 0,
+        remaining: parseFloat(value as string),
+      }));
+      
+      const transformedSpendingsData = response.data.map((entry: string) => {
+        const [date, category, amount] = entry.split(",");
+        return {
+          date,
+          category,
+          amount: parseFloat(amount),
+        };
+      });
+
+      transformedSpendingsData.forEach(spending => {
+        const budgetItem = transformedBudgetData.find(item => item.category === spending.category);
+        if (budgetItem) {
+          budgetItem.spent += spending.amount;
+          budgetItem.remaining = Math.max(budgetItem.allocated - budgetItem.spent, 0);
+        }
+      });
+
+      const tempCategories = await getAllCategories();
+      setCategories(tempCategories);
+      setBudgetData(transformedBudgetData);
+      setSpendingsData(transformedSpendingsData);
+    };
+    
+    fetchData();
+  }, []);
 
   const filteredSpendings = selectedCategory
-    ? mockData.spendings.filter(s => s.category === selectedCategory)
-    : mockData.spendings;
+    ? spendingsData.filter(s => s.category === selectedCategory)
+    : spendingsData;
+
+  const totalAllocated = budgetData.reduce((acc, item) => acc + item.allocated, 0);
+  const totalSpent = budgetData.reduce((acc, item) => acc + item.spent, 0);
+  const totalRemaining = budgetData.reduce((acc, item) => acc + item.remaining, 0);
 
   return (
     <div style={{ padding: '20px' }}>
       <Typography.Title level={4} style={{ color: 'red' }}>Budget Data</Typography.Title>
-      <Table dataSource={mockData.budget_data} pagination={false} rowKey="category">
+      <Table dataSource={[...budgetData, { category: 'Total', allocated: totalAllocated, spent: totalSpent, remaining: totalRemaining }]} pagination={false} rowKey="category">
         <Table.Column title="Category" dataIndex="category" />
         <Table.Column title="Allocated" dataIndex="allocated" />
         <Table.Column title="Spent" dataIndex="spent" />
@@ -42,7 +73,7 @@ function BudgetView() {
         allowClear
         onClear={() => setSelectedCategory(null)}
       >
-        {mockData.categories.map(cat => (
+        {categories.map(cat => (
           <Select.Option key={cat} value={cat}>
             {cat}
           </Select.Option>
@@ -50,8 +81,7 @@ function BudgetView() {
       </Select>
       <Table dataSource={filteredSpendings} pagination={false} rowKey="description">
         <Table.Column title="Category" dataIndex="category" />
-        <Table.Column title="Amount" dataIndex="amount" />
-        <Table.Column title="Description" dataIndex="description" />
+        <Table.Column title="($) Amount" dataIndex="amount" />
         <Table.Column title="Date" dataIndex="date" />
       </Table>
 

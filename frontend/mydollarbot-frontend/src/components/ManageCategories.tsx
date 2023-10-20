@@ -14,10 +14,11 @@ function ManageCategories() {
     fetchData();
   }, []);
 
-  const handleAddCategory = async (category: string) => {
-    await addCategory(category);
+  const handleAddCategory = async () => {
+    await addCategory(newCategory);
     const categoryData = await getAllCategories();
     setCategories(categoryData);
+    setNewCategory('');
   };
 
   const handleDeleteCategory = async (category: string) => {

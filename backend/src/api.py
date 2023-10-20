@@ -160,7 +160,7 @@ def get_all_categories():
     return jsonify(data)
 
 # delete a category
-@app.route("/delete-category", methods=['POST'])
+@app.route("/delete-category", methods=['DELETE'])
 def delete_category(): 
     category = request.json.get('category')
     # open categories.txt

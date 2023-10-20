@@ -1,6 +1,6 @@
-export async function deleteCategory(category: string): Promise<Response> {
+export async function deleteCategory(category: string | null): Promise<Response> {
     const response = await fetch(`/api/delete-category`, {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },

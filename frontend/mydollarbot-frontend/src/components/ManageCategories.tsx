@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button, Input, Divider, Typography, Popconfirm } from 'antd';
-import { getAllCategories } from '../api';
-
-const dummyCategories = ['Food', 'Rent', 'Entertainment'];
+import { getAllCategories, deleteCategory, addCategory } from '../api';
 
 function ManageCategories() {
   const [categories, setCategories] = useState([]);
@@ -16,15 +14,16 @@ function ManageCategories() {
     fetchData();
   }, []);
 
-  const handleAddCategory = () => {
-    if (newCategory && !categories.includes(newCategory)) {
-      setCategories([...categories, newCategory]);
-      setNewCategory('');
-    }
+  const handleAddCategory = async (category: string) => {
+    await addCategory(category);
+    const categoryData = await getAllCategories();
+    setCategories(categoryData);
   };
 
-  const handleDeleteCategory = (category: string) => {
-    setCategories(categories.filter(cat => cat !== category));
+  const handleDeleteCategory = async (category: string) => {
+    await deleteCategory(category);
+    const categoryData = await getAllCategories();
+    setCategories(categoryData);
   };
 
   return (

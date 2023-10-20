@@ -5,7 +5,7 @@ const { Option } = Select;
 const { confirm } = Modal;
 
 const BudgetDelete: React.FC = () => {
-    const [category, setCategory] = useState<string | null>(null);
+    const [category, setCategory] = useState<string | null>('');
 
     const categories = ['Food', 'Rent', 'Entertainment']; // Replace with categories from API if needed
 

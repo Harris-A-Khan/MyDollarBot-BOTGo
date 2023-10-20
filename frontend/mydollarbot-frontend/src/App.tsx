@@ -6,7 +6,6 @@ import BudgetView from './components/BudgetView';
 import BudgetUpdate from './components/BudgetUpdate';
 import BudgetDelete from './components/BudgetDelete';
 import AddSpendingRecord from './components/AddSpendingRecord';
-import AddRecurringSpending from './components/AddRecurringSpending';
 import ManageCategories from './components/ManageCategories';
 
 import { Tabs, Divider, Typography } from 'antd'; // Importing antd components
@@ -91,10 +90,6 @@ function App() {
 
             <TabPane tab="Add Spending Record" key="4">
               <AddSpendingRecord />
-            </TabPane>
-
-            <TabPane tab="Add Recurring Spending Record" key="5">
-              <AddRecurringSpending />
             </TabPane>
 
             <TabPane tab="Manage Categories" key="6">
